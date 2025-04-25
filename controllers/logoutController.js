@@ -2,14 +2,14 @@ const User = require('../models/User');
 
 const handleLogout = async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.sendStatus(204); // No content
+  if (!cookies?.jwt) return status(204).json({ message: 'No content' });
   const refreshToken = cookies.jwt;
 
   // is refreshToken in DB?
   const foundUser = await User.findOne({ refreshToken }).exec();
   if (!foundUser) {
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
-    return res.sendStatus(204); // No content
+    return res.status(204).json({ message: 'No content' });
   }
 
   // Delete refreshToken in DB
@@ -18,7 +18,7 @@ const handleLogout = async (req, res) => {
   console.log(result);
 
   res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
-  res.sendStatus(204); // No content
+  res.status(204).json({ message: 'No content' });
 };
 
 module.exports = { handleLogout };
