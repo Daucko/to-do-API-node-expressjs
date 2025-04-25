@@ -25,7 +25,7 @@ const handleLogin = async (req, res) => {
         },
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '120s' }
+      { expiresIn: '30m' }
     );
     const refreshToken = jwt.sign(
       {
@@ -46,7 +46,7 @@ const handleLogin = async (req, res) => {
       httpOnly: true,
       sameSite: 'None',
       maxAge: 24 * 60 * 60 * 1000, // 1 day
-      secure: true, // set to true if using https
+      secure: true,
     });
     res.json({ accessToken });
   } else {
