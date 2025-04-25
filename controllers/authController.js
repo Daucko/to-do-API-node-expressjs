@@ -18,12 +18,22 @@ const handleLogin = async (req, res) => {
   if (match) {
     // create JWTs
     const accessToken = jwt.sign(
-      { email: foundUser.email },
+      {
+        UserInfo: {
+          email: foundUser.email,
+          userId: foundUser._id,
+        },
+      },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: '120s' }
     );
     const refreshToken = jwt.sign(
-      { email: foundUser.email },
+      {
+        UserInfo: {
+          email: foundUser.email,
+          userId: foundUser._id,
+        },
+      },
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: '1d' }
     );
@@ -34,7 +44,7 @@ const handleLogin = async (req, res) => {
     // creating secure cookie with refresh token
     res.cookie('jwt', refreshToken, {
       httpOnly: true,
-      sameSite: 'None',
+      // sameSite: 'None',
       maxAge: 24 * 60 * 60 * 1000, // 1 day
       // secure: true, // set to true if using https
     });

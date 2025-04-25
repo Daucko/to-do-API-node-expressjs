@@ -12,6 +12,7 @@ const credentials = require('./middleware/credentials');
 
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
+const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 3500;
 
 // connect to MongoDB
@@ -33,10 +34,14 @@ app.use(express.json());
 // and fetch cookies credentials requirement
 app.use(credentials);
 
+// middleware for cookies
+app.use(cookieParser());
+
 // routes
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
 app.use('/refresh', require('./routes/refresh'));
+app.use('/logout', require('./routes/logout'));
 
 app.use(verifyJWT);
 app.use('/tasks', require('./routes/api/tasks'));

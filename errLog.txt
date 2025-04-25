@@ -1,0 +1,4 @@
+20250425	09:37:47	ea6ee1a2-57bb-45cb-aa26-c8215f92d29b	TypeError: Cannot read properties of undefined (reading 'jwt')
+20250425	09:38:06	dacb3588-ba80-4022-b3e5-25b565a0290a	TypeError: Cannot read properties of undefined (reading 'jwt')
+20250425	12:32:23	f1b6a76a-c999-4324-ae99-7670e375d5e5	TypeError: Cannot destructure property 'id' of 'req.body.id' as it is undefined.
+20250425	12:33:12	b7e67f01-baf7-4af5-9cb4-a3c9b3c2c43e	TypeError: Cannot destructure property '_id' of 'req.body.id' as it is undefined.
