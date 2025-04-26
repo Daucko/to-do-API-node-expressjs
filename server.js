@@ -25,7 +25,11 @@ app.use(logger);
 // app.use(cors(corsOptions));
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://your-production-domain.com'],
+    origin: [
+      'http://localhost:5173',
+      'https://mindful-task-manager-app.lovable.app',
+      'https://your-production-domain.com',
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
