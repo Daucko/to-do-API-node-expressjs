@@ -22,7 +22,15 @@ connectDB();
 app.use(logger);
 
 // Cross Origin Resource Sharing
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://your-production-domain.com'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 // Built-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }));
