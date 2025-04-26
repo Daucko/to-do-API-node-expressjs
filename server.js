@@ -40,7 +40,7 @@ app.use(express.json());
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
-app.use(credentials);
+// app.use(credentials);
 
 // middleware for cookies
 app.use(cookieParser());
